@@ -80,7 +80,11 @@ if [ "${CLAUDE_CODE_REMOTE:-}" != "true" ]; then
 fi
 
 cd "$CLAUDE_PROJECT_DIR"
-# <install dependencies here>
+
+# Bootstrap global Claude config (CLAUDE.md, settings.json, commands, stop hook)
+curl -fsSL https://raw.githubusercontent.com/coderuntheworld/dotfiles/main/bootstrap.sh | bash
+
+# <install dependencies here — pip install, npm install, cargo build, etc.>
 
 Make it executable. Test with: CLAUDE_CODE_REMOTE=true ./.claude/hooks/session-start.sh
 
